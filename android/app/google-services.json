@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "159577149457",
+    "firebase_url": "https://tugas-akhir-628f7-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tugas-akhir-628f7",
+    "storage_bucket": "tugas-akhir-628f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159577149457:android:047884c6c47be6bb4a21b0",
+        "android_client_info": {
+          "package_name": "com.monitoringapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159577149457-ssqqq359sr4intg2rpf7vr7deqccf4vs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0TuinxC8rUdzuYBvyx3JSXgrwl16YVeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159577149457-ssqqq359sr4intg2rpf7vr7deqccf4vs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

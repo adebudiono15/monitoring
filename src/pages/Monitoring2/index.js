@@ -1,8 +1,31 @@
 import {StyleSheet, Text, Image, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Menu from '../../components/atoms/menu';
+import database from '@react-native-firebase/database';
 
-const Monitoring2 = ({navigation}) => {
+const Monitoring1 = ({navigation}) => {
+  const [dataStandby, setDataStandby] = useState([]);
+  const [dataIntegral, setDataIntegral] = useState([]);
+  const getData = () => {
+    // Get data Integral
+    database()
+      .ref('/integral/Monitor2')
+      .on('value', snapshot => {
+        setDataIntegral(snapshot.val());
+      });
+
+    // Get Data Standby
+    database()
+      .ref('/standby/Monitor2')
+      .on('value', snapshot => {
+        setDataStandby(snapshot.val());
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <View style={styles.page}>
       <Menu navigation={navigation} />
@@ -17,7 +40,7 @@ const Monitoring2 = ({navigation}) => {
 
       {/* Content */}
       <View style={styles.containerCenter}>
-        <Text style={styles.textTitle}>PARAMETER GLIDEPATH </Text>
+        <Text style={styles.textTitle}>PARAMETER GLIDEPATH 2</Text>
       </View>
       {/*  */}
       <View style={styles.containerColHeader}>
@@ -32,14 +55,14 @@ const Monitoring2 = ({navigation}) => {
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path RF Level</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataIntegral.pathRFLevel}</Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path RF Level</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataStandby.pathRFLevel}</Text>
           </View>
         </View>
       </View>
@@ -48,14 +71,14 @@ const Monitoring2 = ({navigation}) => {
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path DDM</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataIntegral.pathDDM}</Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path DDM</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataStandby.pathDDM}</Text>
           </View>
         </View>
       </View>
@@ -64,14 +87,14 @@ const Monitoring2 = ({navigation}) => {
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path SDM</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataIntegral.pathSDM}</Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path SDM</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataStandby.pathSDM}</Text>
           </View>
         </View>
       </View>
@@ -80,14 +103,14 @@ const Monitoring2 = ({navigation}) => {
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Width DDM</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataIntegral.widthDDM}</Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Width DDM</Text>
           <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+            <Text style={styles.textNumber}>{dataStandby.widthDDM}</Text>
           </View>
         </View>
       </View>
@@ -152,7 +175,7 @@ const Monitoring2 = ({navigation}) => {
   );
 };
 
-export default Monitoring2;
+export default Monitoring1;
 
 const styles = StyleSheet.create({
   page: {
@@ -195,7 +218,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   containerNumber: {
-    width: 37,
+    width: 50,
     height: 19,
     backgroundColor: '#00FF29',
   },
