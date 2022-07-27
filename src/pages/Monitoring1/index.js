@@ -6,6 +6,8 @@ import database from '@react-native-firebase/database';
 const Monitoring1 = ({navigation}) => {
   const [dataStandby, setDataStandby] = useState([]);
   const [dataIntegral, setDataIntegral] = useState([]);
+  const [text, setText] = useState('');
+
   const getData = () => {
     // Get data Integral
     database()
@@ -26,6 +28,23 @@ const Monitoring1 = ({navigation}) => {
     getData();
   }, []);
 
+  const renderDataIntegral = (value, low, hight, prelow, preHight) => {
+    if (value < low || value > hight) {
+      return styles.containerNumberRed;
+    } else if (value < prelow || value > preHight) {
+      return styles.containerNumberYellow;
+    } else {
+      return styles.containerNumberGreen;
+    }
+  };
+
+  const renderTextBold = (value, prelow, preHight) => {
+    if (value < prelow || value > preHight) {
+      return styles.textNumberBold;
+    } else {
+      return styles.textNumber;
+    }
+  };
   return (
     <View style={styles.page}>
       <Menu navigation={navigation} />
@@ -54,15 +73,33 @@ const Monitoring1 = ({navigation}) => {
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path RF Level</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataIntegral.pathRFLevel}</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.pathRFLevel,
+              80.0,
+              120.0,
+              85.0,
+              115.0,
+            )}>
+            <Text style={renderTextBold(dataIntegral.pathRFLevel, 85.0, 115.0)}>
+              {dataIntegral.pathRFLevel}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path RF Level</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataStandby.pathRFLevel}</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.pathRFLevel,
+              80.0,
+              120.0,
+              85.0,
+              115.0,
+            )}>
+            <Text style={renderTextBold(dataStandby.pathRFLevel, 85.0, 115.0)}>
+              {dataStandby.pathRFLevel}
+            </Text>
           </View>
         </View>
       </View>
@@ -70,15 +107,33 @@ const Monitoring1 = ({navigation}) => {
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path DDM</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataIntegral.pathDDM}</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.pathDDM,
+              -0.05,
+              0.05,
+              -0.038,
+              0.038,
+            )}>
+            <Text style={renderTextBold(dataIntegral.pathDDM, -0.038, 0.038)}>
+              {dataIntegral.pathDDM}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path DDM</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataStandby.pathDDM}</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.pathDDM,
+              -0.05,
+              0.05,
+              -0.038,
+              0.038,
+            )}>
+            <Text style={renderTextBold(dataStandby.pathDDM, -0.038, 0.038)}>
+              {dataStandby.pathDDM}
+            </Text>
           </View>
         </View>
       </View>
@@ -86,15 +141,33 @@ const Monitoring1 = ({navigation}) => {
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path SDM</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataIntegral.pathSDM}</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.pathSDM,
+              76.0,
+              84.0,
+              77.0,
+              83.0,
+            )}>
+            <Text style={renderTextBold(dataIntegral.pathSDM, 77.0, 83.0)}>
+              {dataIntegral.pathSDM}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Path SDM</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataStandby.pathSDM}</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.pathSDM,
+              76.0,
+              84.0,
+              77.0,
+              83.0,
+            )}>
+            <Text style={renderTextBold(dataStandby.pathSDM, 77.0, 83.0)}>
+              {dataStandby.pathSDM}
+            </Text>
           </View>
         </View>
       </View>
@@ -102,15 +175,33 @@ const Monitoring1 = ({navigation}) => {
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Width DDM</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataIntegral.widthDDM}</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.widthDDM,
+              0.125,
+              0.225,
+              0.137,
+              0.213,
+            )}>
+            <Text style={renderTextBold(dataIntegral.widthDDM, 0.137, 0.213)}>
+              {dataIntegral.widthDDM}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>Width DDM</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>{dataStandby.widthDDM}</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.widthDDM,
+              0.125,
+              0.225,
+              0.137,
+              0.213,
+            )}>
+            <Text style={renderTextBold(dataStandby.widthDDM, 0.137, 0.213)}>
+              {dataStandby.widthDDM}
+            </Text>
           </View>
         </View>
       </View>
@@ -124,49 +215,102 @@ const Monitoring1 = ({navigation}) => {
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>RF Level</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.rfLevel,
+              75.0,
+              133.0,
+              81.0,
+              125.0,
+            )}>
+            <Text style={renderTextBold(dataIntegral.rfLevel, 81.0, 125.0)}>
+              {dataIntegral.rfLevel}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
           <Text style={styles.nameContent}>RF Level</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.rfLevel,
+              75.0,
+              133.0,
+              81.0,
+              125.0,
+            )}>
+            <Text style={renderTextBold(dataStandby.rfLevel, 81.0, 125.0)}>
+              {dataStandby.rfLevel}
+            </Text>
           </View>
         </View>
       </View>
       {/*  */}
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
-          <Text style={styles.nameContent}>150Hz Mod Percent</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+          <Text style={styles.nameContent}>150Hz Mod</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.mod150,
+              65.0,
+              95.0,
+              69.0,
+              91.0,
+            )}>
+            <Text style={renderTextBold(dataIntegral.mod150, 69.0, 91.0)}>
+              {dataIntegral.mod150}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
-          <Text style={styles.nameContent}>150Hz Mod Percent</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+          <Text style={styles.nameContent}>150Hz Mod</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.mod150,
+              65.0,
+              95.0,
+              69.0,
+              91.0,
+            )}>
+            <Text style={renderTextBold(dataStandby.mod150, 69.0, 91.0)}>
+              {dataStandby.mod150}
+            </Text>
           </View>
         </View>
       </View>
       {/*  */}
-      <View style={{marginTop: 80}} />
       {/*  */}
       <View style={styles.containerContent}>
         <View style={styles.containerSubContent}>
-          <Text style={styles.nameContent}>RF Freq Difference</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+          <Text style={styles.nameContent}>RF Freq</Text>
+          <View
+            style={renderDataIntegral(
+              dataIntegral.rfDiff,
+              65.0,
+              95.0,
+              69.0,
+              91.0,
+            )}>
+            <Text style={renderTextBold(dataIntegral.rfDiff, 69.0, 91.0)}>
+              {dataIntegral.rfDiff}
+            </Text>
           </View>
         </View>
         {/*  */}
         <View style={styles.containerSubContent}>
-          <Text style={styles.nameContent}>RF Freq Difference</Text>
-          <View style={styles.containerNumber}>
-            <Text style={styles.textNumber}>10</Text>
+          <Text style={styles.nameContent}>RF Freq</Text>
+          <View
+            style={renderDataIntegral(
+              dataStandby.rfDiff,
+              65.0,
+              95.0,
+              69.0,
+              91.0,
+            )}>
+            <Text style={renderTextBold(dataStandby.rfDiff, 69.0, 91.0)}>
+              {dataStandby.rfDiff}
+            </Text>
           </View>
         </View>
       </View>
@@ -217,13 +361,27 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontFamily: 'Poppins-Regular',
   },
-  containerNumber: {
+  containerNumberGreen: {
     width: 50,
     height: 19,
     backgroundColor: '#00FF29',
   },
+  containerNumberRed: {
+    width: 50,
+    height: 19,
+    backgroundColor: '#FF0000',
+  },
+  containerNumberYellow: {
+    width: 50,
+    height: 19,
+    backgroundColor: '#FFCE00',
+  },
   textNumber: {
     textAlign: 'center',
+  },
+  textNumberBold: {
+    textAlign: 'center',
+    fontFamily: 'Poppins-Bold',
   },
   containerSubContent: {
     flexDirection: 'row',
