@@ -287,12 +287,12 @@ const Monitoring1 = ({navigation}) => {
           <View
             style={renderDataIntegral(
               dataIntegral.rfDiff,
-              65.0,
-              95.0,
-              69.0,
-              91.0,
+              7600,
+              8400,
+              7700,
+              8300,
             )}>
-            <Text style={renderTextBold(dataIntegral.rfDiff, 69.0, 91.0)}>
+            <Text style={renderTextBold(dataIntegral.rfDiff, 7700, 8300)}>
               {dataIntegral.rfDiff}
             </Text>
           </View>
@@ -303,12 +303,12 @@ const Monitoring1 = ({navigation}) => {
           <View
             style={renderDataIntegral(
               dataStandby.rfDiff,
-              65.0,
-              95.0,
-              69.0,
-              91.0,
+              7600,
+              8400,
+              7700,
+              8300,
             )}>
-            <Text style={renderTextBold(dataStandby.rfDiff, 69.0, 91.0)}>
+            <Text style={renderTextBold(dataStandby.rfDiff, 7700, 8300)}>
               {dataStandby.rfDiff}
             </Text>
           </View>
